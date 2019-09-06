@@ -22,10 +22,10 @@
           let x = params.get("pointX")
           let y = params.get("pointY")
           let el = document.getElementById('map')
-          console.log("x", x)
+          
           let markerPos;
           map = new window.kakao.maps.Map(el, {
-            center: new window.kakao.maps.LatLng(37.5040244, 127.0444955),
+            center: new window.kakao.maps.LatLng(y, x),
             level: 4
           });
 
@@ -39,7 +39,7 @@
           marker.setPosition(latlng);
           lat = latlng.getLat();
           lng = latlng.getLng();
-          alert(`lat: ${lat} lng: ${lng}`)
+          window.location.href=`?pointX=${lng}&pointY=${lat}`
         //   window.ReactNativeWebView.postMessage(JSON.stringify({lat, lng }));
             
         });
