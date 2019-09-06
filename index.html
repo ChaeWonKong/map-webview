@@ -16,9 +16,13 @@
             src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=0eebabf3b81e20a91ada5d388733e78c"
           ></script>
         <script>
+            let searchString = window.location.search
+            let params = new URLSearchParams(searchString)
           let map;
-          let x, y;
+          let x = params.get("pointX")
+          let y = params.get("pointY")
           let el = document.getElementById('map')
+          console.log("x", x)
           let markerPos;
           map = new window.kakao.maps.Map(el, {
             center: new window.kakao.maps.LatLng(37.5040244, 127.0444955),
