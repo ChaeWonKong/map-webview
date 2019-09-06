@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head> 
+
+        <style>
+            head, body {
+                margin: 0;
+                padding: 0;
+            }
+        </style>
+      </head>
+      <body>
+      <div id="map" style="width: 100vw; height: 100vh; margin: 0; padding: 0">
+            <script
+            type="text/javascript"
+            src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=0eebabf3b81e20a91ada5d388733e78c"
+          ></script>
+        <script>
+          let map;
+          let x, y;
+          let el = document.getElementById('map')
+          let markerPos;
+          map = new window.kakao.maps.Map(el, {
+            center: new window.kakao.maps.LatLng(37.5040244, 127.0444955),
+            level: 4
+          });
+
+        let marker = new kakao.maps.Marker({         
+          position: map.getCenter() 
+        }); 
+
+        kakao.maps.event.addListener(map, "click", function(mouseEvent) {
+          let latlng = mouseEvent.latLng;
+          let lat,lng;
+          marker.setPosition(latlng);
+          lat = latlng.getLat();
+          lng = latlng.getLng();
+          alert(`lat: ${lat} lng: ${lng}`)
+        //   window.ReactNativeWebView.postMessage(JSON.stringify({lat, lng }));
+            
+        });
+        
+        marker.setMap(map);
+        </script>
+      </body>
+    </html>
